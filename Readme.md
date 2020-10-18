@@ -30,11 +30,13 @@ docker push isieiam/se_ui:1.0
  - для текущего запуска, воспользоваться репом infra (https://github.com/IsieIam/infra) для создания k8s
  - запускаем, подставив имя кластера вместо otus-cluster:
 
-```yc managed-kubernetes cluster get-credentials otus-cluster --external --force
+```
+yc managed-kubernetes cluster get-credentials otus-cluster --external --force
 ```
  - на текущий момент создаем namespace:
 
-```kubectl create namespace aznamespace
+```
+kubectl create namespace aznamespace
 ```
 
  - и дальше из корня:
