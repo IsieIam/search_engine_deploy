@@ -1,0 +1,43 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: se-crawler
+  labels:
+    app: search-engine
+    component: se-crawler
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: search-engine
+      component: se-crawler
+  template:
+    metadata:
+      name: se-crawler
+      labels:
+        app: search-engine
+        component: se-crawler
+    spec:
+      containers:
+      - image: isieiam/se_crawler:1.0
+        name: se-crawler
+        env:
+        - name: MONGO
+          value: mongo
+        - name: MONGO_PORT
+          value: '27017'
+        - name: RMQ_HOST
+          value: rmq
+        - name: RMQ_QUEUE
+          value: se_queue
+        - name: RMQ_USERNAME
+          value: rmquser
+        - name: RMQ_PASSWORD
+          value: rmqpassword
+        - name: CHECK_INTERVAL
+          value: '300'
+        - name: EXCLUDE_URLS
+          value: '.*github.com'
+        - name: URL
+          value: 'https://vitkhab.github.io/search_engine_test_site/'

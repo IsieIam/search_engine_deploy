@@ -1,0 +1,62 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: se-ui
+  labels:
+    app: search-engine
+    component: se-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: search-engine
+      component: se-ui
+  template:
+    metadata:
+      name: se-ui
+      labels:
+        app: search-engine
+        component: se-ui
+    spec:
+      containers:
+      - image: isieiam/se_ui:1.0
+        name: se-ui
+        env:
+        - name: MONGO
+          value: mongo
+        - name: MONGO_PORT
+          value: '27017'
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: se-ui
+  labels:
+    app: search-engine
+    component: se-ui
+spec:
+  ports:
+    - port: 8000
+      protocol: TCP
+      targetPort: 8000
+  selector:
+    app: search-engine
+    component: se-ui
+
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: se-ui
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /se-ui(/|$)(.*)
+        backend:
+          serviceName: se-ui
+          servicePort: 8000
