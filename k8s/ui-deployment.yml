@@ -50,13 +50,14 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: se-ui
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+#  annotations:
+#    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   rules:
-  - http:
+  - host: ui.84.201.134.211.nip.io
+    http:
       paths:
-      - path: /se-ui(/|$)(.*)
+      - path: /
         backend:
           serviceName: se-ui
           servicePort: 8000

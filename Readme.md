@@ -24,7 +24,7 @@ docker push isieiam/se_ui:1.0
 ```
  - Отдельная репо для разворачивания инфраструктуры в облаке: https://github.com/IsieIam/infra
 
-## Local - ручной локальный стенд (см в каталоге подробное описание)
+## Local - ручной локальный стенд, основанный на docker-compose (см в каталоге подробное описание)
 ## k8s - первичный набор yml для k8s
  - считаем что YC настроен (добавить мануал по настройке)
  - для текущего запуска, воспользоваться репом infra (https://github.com/IsieIam/infra) для создания k8s
@@ -44,8 +44,9 @@ kubectl create namespace aznamespace
 ```
  kubectl apply -f ./k8s/ -n aznamespace
 ```
+ - для запуска приложения http://ui.ip.nio.io
 
 TODO
  - добавить полноценные secret
- - переработать ingress под host (ибо приложение не умеет делать root path)
  - перевести на helmcharts
+ - создать pipeline jenkins для билда, теста и деплоя
