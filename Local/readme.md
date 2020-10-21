@@ -24,7 +24,19 @@ docker-machine create \
 ```
 eval $(docker-machine env docker-host)
 ```
-# Удаление всего
+
+## Запуск/остановка
+
+В каталоге Local:
+
+```
+docker-compose up -d
+docker-compose down
+```
+
+Проверка: заходим по http://ip-адрес:8000
+
+## Удаление всего
 ```
 docker-machine rm docker-host
 yc compute instance delete docker-host
