@@ -1,9 +1,9 @@
 pipeline {
-    agent { any }
+    agent { master }
     stages {
         stage('build') {
             steps {
-                sh 'cat Jenkinsfile'
+                sh 'ls'
             }
         }
     }
