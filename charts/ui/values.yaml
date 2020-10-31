@@ -1,0 +1,15 @@
+---
+service:
+  internalPort: 8000
+  externalPort: 8000
+
+image:
+  repository: isieiam/se_ui
+  tag: "1.0"
+
+ingress:
+  class: nginx
+  host: se-ui.84.201.132.166.nip.io
+
+databaseHost:
+databasePort:

@@ -1,0 +1,68 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "ui.fullname" . }}
+  labels:
+    app: search-engine
+    component: ui
+    release: {{ .Release.Name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: search-engine
+      component: ui
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      name: ui
+      labels:
+        app: search-engine
+        component: ui
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+      - image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        name: ui
+        env:
+        - name: MONGO
+          value: {{  .Values.databaseHost | default (printf "%s-mongodb" .Release.Name) }}
+        - name: MONGO_PORT
+          value: {{  .Values.databasePort | default "27017" | quote }}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "ui.fullname" . }}
+  labels:
+    app: search-engine
+    component: ui
+    release: {{ .Release.Name }}
+spec:
+  ports:
+    - port: {{ .Values.service.externalPort }}
+      protocol: TCP
+      targetPort: {{ .Values.service.internalPort }}
+  selector:
+    app: search-engine
+    component: ui
+    release: {{ .Release.Name }}
+
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "ui.fullname" . }}
+  annotations:
+    kubernetes.io/ingress.class: {{ .Values.ingress.class }}
+spec:
+  rules:
+  - host: "{{ .Release.Name }}.{{ .Values.ingress.host | default .Release.Name }}"
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ template "ui.fullname" . }}
+          servicePort: {{ .Values.service.externalPort }}

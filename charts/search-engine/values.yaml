@@ -1,0 +1,25 @@
+crawler:
+  image:
+    repository: isieiam/se_crawler
+    tag: "1.0"
+
+rabbitmq:
+  auth:
+    username: rmquser
+    password: rmqpassword
+  persistence:
+    enabled: false
+
+mongodb:
+  usePassword: false
+
+ui:
+  image:
+    repository: isieiam/se_ui
+    tag: "1.0"
+  service:
+    externalPort: 8000
+  ingress:
+    host: 130.193.37.67.nip.io
+
+

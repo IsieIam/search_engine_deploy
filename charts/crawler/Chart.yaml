@@ -1,0 +1,7 @@
+name: crawler
+version: 1.0.0
+description: search engine crawler
+maintainers:
+  - name: Someone
+    email: my@mail.com
+appVersion: 1.0

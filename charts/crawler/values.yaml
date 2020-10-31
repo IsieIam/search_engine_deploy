@@ -1,0 +1,9 @@
+---
+
+image:
+  repository: isieiam/se_crawler
+  tag: "1.0"
+
+databaseHost:
+databasePort:
+rmqHost:
