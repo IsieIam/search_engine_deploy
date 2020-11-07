@@ -9,19 +9,19 @@ rabbitmq:
     password: rmqpassword
   persistence:
     enabled: false
-  podLabels:
-    app: search-engine
-    component: rmq
+#  podLabels:
+#    app: search-engine
+#    component: rmq
 
 
 mongodb:
   usePassword: false
-  labels:
-    app: search-engine
-    component: db
-  podLabels:
-    app: search-engine
-    component: db
+#  labels:
+#    app: search-engine
+#    component: db
+#  podLabels:
+#    app: search-engine
+#    component: db
 
 
 ui:

@@ -22,7 +22,7 @@ pipeline {
                 sh '''
                       cd ${DeployDir}
                       helm ls
-                      helm delete --purge search-engine-test
+                      helm uninstall search-engine-test -n ${NameSpace}
                       helm upgrade --install search-engine-test . -f values.yaml -n ${NameSpace}
                    '''
             }
