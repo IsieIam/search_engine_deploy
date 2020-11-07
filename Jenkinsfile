@@ -20,7 +20,8 @@ pipeline {
         }
         stage('deploy test') {
             steps {
-                sh 'helm install search-engine-test -n ${NameSpace}'
+                //sh 'helm install search-engine-test -n ${NameSpace}'
+                sh 'helm upgrade --install search-engine-test . -f values.yaml -n ${NameSpace}'
             }
         }
         stage('test for test') {
@@ -30,7 +31,7 @@ pipeline {
         }
         stage('deploy prod') {
             steps {
-                sh 'helm install search-engine-prod -n ${NameSpace}'
+                sh 'helm upgrade --install search-engine-prod . -f values.yaml -n ${NameSpace}'
             }
         }
         stage('test for prod') {
