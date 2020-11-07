@@ -12,7 +12,7 @@ pipeline {
                     //TODO - add modify of image tag in helm values
                     //TODO - add custom external ingress ip-address
                     sh '''
-                          helm dep update'
+                          helm dep update
                           cd ${DeployDir}
                        '''
                 }
