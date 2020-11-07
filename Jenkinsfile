@@ -22,7 +22,7 @@ pipeline {
                 sh '''
                       cd ${DeployDir}
                       helm ls
-                      helm uninstall search-engine-test -n ${NameSpace}
+                      //helm uninstall search-engine-test -n ${NameSpace}
                       helm upgrade --install search-engine-test . -f values.yaml -n ${NameSpace}
                    '''
             }
@@ -36,7 +36,7 @@ pipeline {
             steps {
                 sh '''
                       cd ${DeployDir}
-                      helm uninstall search-engine-prod -n ${NameSpace}
+                      //helm uninstall search-engine-prod -n ${NameSpace}
                       helm upgrade --install search-engine-prod . -f values.yaml -n ${NameSpace}
                    '''
             }
