@@ -4,7 +4,7 @@ pipeline {
         DeployDir = './charts/search-engine/'
         NameSpace = 'aznamespace'
         appdomain = '84.201.173.11.nio.io'
-        KUBECONFIG = /var/lib/jenkins/.kube/kubeconfig
+        KUBECONFIG = '/var/lib/jenkins/.kube/kubeconfig'
     }
     stages {
         stage('prepare') {
