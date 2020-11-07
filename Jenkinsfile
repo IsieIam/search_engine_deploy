@@ -7,11 +7,9 @@ pipeline {
         KUBECONFIG = '/var/lib/jenkins/.kube/kubeconfig'
     }
     stages {
-        stage('prepare') {
+        stage('prepare helm') {
             steps {
                 script{
-                    //TODO - add modify of image tag in helm values
-                    //TODO - add custom external ingress ip-address
                     sh '''
                           cd ${DeployDir}
                           helm dep update
@@ -23,6 +21,8 @@ pipeline {
             steps {
                 sh '''
                       cd ${DeployDir}
+                      helm ls
+                      helm delete --purge search-engine-test
                       helm upgrade --install search-engine-test . -f values.yaml -n ${NameSpace}
                    '''
             }
