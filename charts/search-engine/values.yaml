@@ -7,6 +7,7 @@ rabbitmq:
   auth:
     username: rmquser
     password: rmqpassword
+    erlangCookie: 12345678901234567890123456789011
   persistence:
     enabled: false
 #  podLabels:

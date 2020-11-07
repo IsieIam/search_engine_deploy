@@ -36,6 +36,7 @@ pipeline {
             steps {
                 sh '''
                       cd ${DeployDir}
+                      helm uninstall search-engine-prod -n ${NameSpace}
                       helm upgrade --install search-engine-prod . -f values.yaml -n ${NameSpace}
                    '''
             }
