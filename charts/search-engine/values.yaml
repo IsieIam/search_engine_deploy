@@ -20,6 +20,6 @@ ui:
   service:
     externalPort: 8000
   ingress:
-    host: 130.193.37.67.nip.io
+    host: 84.201.173.11.nip.io
 
 

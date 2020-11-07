@@ -3,6 +3,7 @@ pipeline {
     environment{
         DeployDir = './charts/search-engine/'
         NameSpace = 'aznamespace'
+        appdomain = '84.201.173.11.nio.io'
     }
     stages {
         stage('prepare') {
@@ -10,8 +11,10 @@ pipeline {
                 script{
                     //TODO - add modify of image tag in helm values
                     //TODO - add custom external ingress ip-address
-                    cd ${DeployDir}
-                    sh 'helm dep update'
+                    sh '''
+                          helm dep update'
+                          cd ${DeployDir}
+                       '''
                 }
             }
         }
@@ -22,7 +25,7 @@ pipeline {
         }
         stage('test for test') {
             steps {
-                sh 'curl search-engine-test.ipaddress.nio.io'
+                sh 'curl search-engine-test.${appdomain}'
             }
         }
         stage('deploy prod') {
@@ -32,7 +35,7 @@ pipeline {
         }
         stage('test for prod') {
             steps {
-                sh 'curl search-engine-prod.ipaddress.nio.io'
+                sh 'curl search-engine-prod.${appdomain}'
             }
         }
     }
