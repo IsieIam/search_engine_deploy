@@ -53,5 +53,8 @@ docker push isieiam/se_ui:1.0
 - тест: https://search-engine-test.ipaddress.nip.io
 - прод: https://search-engine-prod.ipaddress.nip.io
 
+### Screencast
+- скринкаст можно посмотреть по ссылке(заранее приношу извинения за оговорки и прочие неточности :) )  https://youtu.be/tn6rTdO2Kk0
+
 ### TODO
  - добавить полноценные secret
