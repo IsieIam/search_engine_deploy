@@ -3,7 +3,7 @@ pipeline {
     environment{
         DeployDir = './charts/search-engine/'
         NameSpace = 'aznamespace'
-        appdomain = '130.193.36.166.nip.io'
+        appdomain = '178.154.226.188.nip.io'
         KUBECONFIG = '/var/lib/jenkins/.kube/kubeconfig'
     }
     stages {
