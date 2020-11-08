@@ -21,6 +21,7 @@ spec:
         app: search-engine
         component: crawler
         release: {{ .Release.Name }}
+        prometheus.io/scrape: "true"
     spec:
       containers:
       - image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
