@@ -22,6 +22,7 @@ spec:
         component: ui
         release: {{ .Release.Name }}
         prometheus.io/scrape: "true"
+        prometheus.io/port: '8000'
     spec:
       containers:
       - image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
